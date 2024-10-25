@@ -1,12 +1,13 @@
 #include <vector>
 #include <algorithm>
 #include <climits>
+#include <cmath>
 
 class Solution {
 public:
     int threeSumClosest(std::vector<int>& nums, int target) {
         std::sort(nums.begin(), nums.end());
-        int closest_sum = INT_MAX;
+        int closest_sum = nums[0] + nums[1] + nums[2];
         int n = nums.size();
         
         for (int i = 0; i < n - 2; ++i) {
@@ -16,7 +17,7 @@ public:
             while (left < right) {
                 int current_sum = nums[i] + nums[left] + nums[right];
                 
-                if (abs(current_sum - target) < abs(closest_sum - target)) {
+                if (std::abs(current_sum - target) < std::abs(closest_sum - target)) {
                     closest_sum = current_sum;
                 }
                 
