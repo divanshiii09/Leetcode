@@ -3,30 +3,30 @@ using namespace std;
 
 class Solution {
 public:
-    int kthSmallest(vector<vector<int>>& matrix, int k) {
-        int n = matrix.size();
-        int left = matrix[0][0], right = matrix[n - 1][n - 1];
+    int kthSmallest(vector<vector<int>>& m, int k) {
+        int n = m.size();
+        int l = m[0][0], r = m[n - 1][n - 1];
         
-        auto countLessEqual = [&](int mid) {
-            int count = 0, j = n - 1;
+        auto countLE = [&](int mid) {
+            int cnt = 0, j = n - 1;
             for (int i = 0; i < n; ++i) {
-                while (j >= 0 && matrix[i][j] > mid) {
+                while (j >= 0 && m[i][j] > mid) {
                     --j;
                 }
-                count += (j + 1);
+                cnt += (j + 1);
             }
-            return count;
+            return cnt;
         };
         
-        while (left < right) {
-            int mid = left + (right - left) / 2;
-            if (countLessEqual(mid) < k) {
-                left = mid + 1;
+        while (l < r) {
+            int mid = l + (r - l) / 2;
+            if (countLE(mid) < k) {
+                l = mid + 1;
             } else {
-                right = mid;
+                r = mid;
             }
         }
         
-        return left;
+        return l;
     }
 };
