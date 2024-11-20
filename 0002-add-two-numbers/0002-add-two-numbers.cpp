@@ -4,7 +4,6 @@ public:
         ListNode* dummyHead = new ListNode();
         ListNode* current = dummyHead;
         int carry = 0;
-
         while (l1 != nullptr || l2 != nullptr || carry != 0) {
             int val1 = (l1 != nullptr) ? l1->val : 0;
             int val2 = (l2 != nullptr) ? l2->val : 0;
